@@ -1,0 +1,50 @@
+[System]
+Name='SkinOrNoSkin'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=8
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Y'
+Range=[16 236]
+NumMFs=2
+MF1='High':'smf',[-7.60793650793651 245.492063492063]
+MF2='Low':'zmf',[13.0900952380952 232.838095238095]
+
+[Input2]
+Name='CB'
+Range=[16 240]
+NumMFs=2
+MF1='Low':'zmf',[-19.2692592592593 204.740740740741]
+MF2='High':'smf',[-22.7481481481481 211.851851851852]
+
+[Input3]
+Name='CR'
+Range=[16 240]
+NumMFs=2
+MF1='Low':'zmf',[-2.6666666666667 222]
+MF2='High':'smf',[-1.5296296296296 223.370370370371]
+
+[Output1]
+Name='Pixel'
+Range=[0 1]
+NumMFs=2
+MF1='NonSkin':'trimf',[0 0.25 0.5]
+MF2='Skin':'trimf',[0.5 0.75 1]
+
+[Rules]
+1 2 2, 2 (1) : 1
+2 1 1, 1 (1) : 1
+2 1 2, 1 (1) : 1
+2 2 1, 1 (1) : 1
+2 2 2, 1 (1) : 1
+1 1 1, 1 (1) : 1
+1 1 2, 1 (1) : 1
+1 2 1, 1 (1) : 1
